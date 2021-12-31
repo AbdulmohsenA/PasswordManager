@@ -1,7 +1,7 @@
 # SQL Cheat Sheet
 
 ## Create a new Table
-[CREATE TABLE] will create a table, [IF NOT EXISTS] will skip the command if the table already exists
+`[CREATE TABLE]` will create a table, `[IF NOT EXISTS]` will skip the command if the table already exists
 
 ### Example
 ```sql
@@ -11,21 +11,21 @@ CREATE TABLE IF NOT EXISTS <TABLENAME> (
 )
 ```
 
-ADD -- Adds a new column to an existing table
+`ADD` -- Adds a new column to an existing table
 
-ADD CONSTRAINT -- Creates a new constraint on an existing table, which is used to specify rules for any data in the table.
+`ADD CONSTRAINT` -- Creates a new constraint on an existing table, which is used to specify rules for any data in the table.
 
-ALTER TABLE -- Adds, deletes or edits columns in a table. It can also be used to add and delete constraints in a table, as per the above.
+`ALTER TABLE` -- Adds, deletes or edits columns in a table. It can also be used to add and delete constraints in a table, as per the above.
 
-ALTER COLUMN -- Changes the data type of a table’s column.
+`ALTER COLUMN` -- Changes the data type of a table’s column.
 
-ALL -- Returns true if all of the subquery values meet the passed condition.
+`ALL` -- Returns true if all of the subquery values meet the passed condition.
 
-AND -- Used to join separate conditions within a WHERE clause.
+`AND` -- Used to join separate conditions within a WHERE clause.
 
-ANY -- Returns true if any of the subquery values meet the given condition.
+`ANY` -- Returns true if any of the subquery values meet the given condition.
 
-AS -- Renames a table or column with an alias value which only exists for the duration of the query.
+`AS` -- Renames a table or column with an alias value which only exists for the duration of the query.
 
 ASC -- Used with ORDER BY to return the data in ascending order.
 
