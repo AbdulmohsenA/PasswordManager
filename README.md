@@ -7,10 +7,15 @@ Local database with a Master Password to access the database
 This program creates a random password for each instance that complies with present password requirements
 
 ## Setup
+Clone repo
+```
+git clone https://github.com/AbdulmohsenA/PasswordManager
+```
+
 install requirements.txt
-'''
+```
 pip install requirements.txt
-'''
+```
 
 ## TODO
 - **Finish Database**:
