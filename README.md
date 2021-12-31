@@ -8,7 +8,7 @@ This program creates a random password for each instance that complies with pres
 
 ## Setup
 install requirements.txt
-'''pip
+'''
 pip install requirements.txt
 '''
 
