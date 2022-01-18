@@ -28,7 +28,7 @@ pip install requirements.txt
 
 ## TODO
 #### Functionality
-- ~~Finish Database**: Complete the main objective~~
+- ~~**Finish Database**: Complete the main objective~~
 - ~~**Delete passwords**: Add a functionality to delete the passwords~~
 - **Clear database**: clear the whole database
 - **Change master password**: Make a function to change the master password
