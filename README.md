@@ -12,6 +12,12 @@ Clone repo
 git clone https://github.com/AbdulmohsenA/PasswordManager
 ```
 
+### Adjusting the .env file
+You will fine a file called ADMIN.env has your Master password in order to access the database through this program.
+```
+DATABASE_PASSWORD = (Your password)
+```
+
 install requirements.txt
 ```
 pip install requirements.txt
@@ -22,15 +28,15 @@ pip install requirements.txt
 
 ## TODO
 #### Functionality
-- **Finish Database**: Complete the main objective
-- **Delete passwords**: Add a functionality to delete the passwords
+- ~~**Finish Database**: Complete the main objective
+- ~~**Delete passwords**: Add a functionality to delete the passwords
 - **Clear database**: clear the whole database
 - **Change master password**: Make a function to change the master password
 
 #### Security
 - **Secure the admin password**: Salt the login and hash it, and don't save the Admin password itself
 - **Cypher the stored passwords**: Hash them in the database and decrypt them only when printing them
-- **Only door is this program**: Make it so that the only way to see the passwords in the db is through this program
+- **Only door is this program**: Make it so that the only way to see the passwords in the db is through this program (SEE ext)
 
 #### Adjustments
 - **Cleanup**: Optimize the code

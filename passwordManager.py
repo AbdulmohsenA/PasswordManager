@@ -6,7 +6,7 @@ from time import sleep
 def main():
 
     # Load the Admin password from .env file
-    load_dotenv("ADMIN_.env")
+    load_dotenv("ADMIN.env")
     ADMIN_PASSWORD = os.environ["DATABASE_PASSWORD"]
 
 
@@ -30,11 +30,22 @@ def main():
 
     choice = userInterface()
     while choice != "q":
-        if choice == "ap": 
+        if choice == "gp": 
             username = input("Enter username: ")
             service = input("Enter service: ")
-            add_password(service, username)
+            add_password(service, username, generate_password())
             print("Done.\n")
+
+        elif choice == "ap":
+            username = input("Enter username: ")
+            service = input("Enter service: ")
+            password = input("Enter password: ")
+            add_password(service, username, password)
+            print("Done.\n")
+
+        elif choice == "dl":
+            username = input("Enter the username: ")
+            delete_password(username)
 
         elif choice == "list":
             list_passwords()
@@ -47,8 +58,11 @@ def main():
         choice = userInterface()
 
 def userInterface():
+    print("\n"*3)
     print("*"*20)
-    print("ap -> Add Password")
+    print("gp -> Generate Password")
+    print("ap -> Add password")
+    print("dl -> delete a password")
     print("list -> List all passwords")
     print("q to quit")
     print("*"*20)
@@ -63,11 +77,14 @@ def generate_password():
     password = "".join(random.choice(chars) for i in range(12))
     return password
 
-def add_password(service, username):
-    password = generate_password()
-
+def add_password(service, username, password):
     command = f'''INSERT INTO Passwords (Service, Username, Password)
     VALUES ('{service}', '{username}', '{password}')'''
+    db.execute(command)
+    db.commit()
+
+def delete_password(username):
+    command = f'''DELETE FROM Passwords WHERE Username="{username}"'''
     db.execute(command)
     db.commit()
 
@@ -76,10 +93,9 @@ def list_passwords():
     db.commit()
 
     for row in cursor.fetchall():
-        print(f"Service: {row[0]} Username: {row[1]} Password: {row[2]}")
+        print(f"Service: {row[0]:<10} Username: {row[1]:<10} Password: {row[2]:<10}")
 
-
-
+    input("\nPress Enter to continue..")
 
 if __name__ == "__main__":
     main()
