@@ -1,10 +1,16 @@
 # Password Manager
 
-## Database
-Local database with a Master Password to access the database
 
-## Password Generator
-This program creates a random password for each instance that complies with present password requirements
+## Features
+
+### Database
+Local database with a Master Password to access the database.
+
+### Ciphered Passwords
+Passwords loaded into the database will be encrypted. And will be decrypted through this program.
+
+### Password Generator
+Create a random password for each username that complies with present password requirements, you don't need to reuse your own passwords.
 
 ## Setup
 Clone repo
@@ -13,7 +19,8 @@ git clone https://github.com/AbdulmohsenA/PasswordManager
 ```
 
 ### Adjusting the .env file
-You will fine a file called ADMIN.env has your Master password in order to access the database through this program.
+You will find a file called ADMIN.env which will contain your secret information.
+`DATABASE_PASSWORD` is the Master password in order to access the database through this program.
 `KEY` is a key to encrypt and decrypt your passwords.
 ```
 DATABASE_PASSWORD = (Your password)
