@@ -20,8 +20,9 @@ git clone https://github.com/AbdulmohsenA/PasswordManager
 
 ### Adjusting the .env file
 You will find a file called ADMIN.env which will contain your secret information.
-`DATABASE_PASSWORD` is the Master password in order to access the database through this program.
-`KEY` is a key to encrypt and decrypt your passwords.
+
+`DATABASE_PASSWORD` is the Master password in order to access the database through this program.  
+`KEY` is a key to encrypt and decrypt your passwords.  
 ```
 DATABASE_PASSWORD = (Your password)
 KEY = (KEY)
