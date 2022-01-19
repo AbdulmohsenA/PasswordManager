@@ -1,7 +1,7 @@
 import sqlite3, os, sys, string, random
-from hashlib import sha256
 from dotenv import load_dotenv
 from time import sleep
+from cryptography.fernet import Fernet
 
 def main():
 
@@ -16,6 +16,11 @@ def main():
         login = input("Wrong password, try again: ")
         if login == "q":
             sys.exit(1)
+
+    # Create a fernet and set a key for it
+    global fernet 
+    KEY = os.environ["KEY"].encode()
+    fernet = Fernet(KEY)
 
     # Create a database file and a data table if they don't exist
     global db
@@ -71,6 +76,13 @@ def userInterface():
 
     return choice
 
+def encrypt(password):
+    encPassword = fernet.encrypt(password.encode()).decode()
+    return encPassword
+
+def decrypt(password):
+    decPassword = fernet.decrypt(password.encode()).decode()
+    return decPassword
 
 def generate_password():
     chars = string.ascii_letters + string.digits + "!@#$%^&*()"
@@ -78,6 +90,7 @@ def generate_password():
     return password
 
 def add_password(service, username, password):
+    password = encrypt(password)
     command = f'''INSERT INTO Passwords (Service, Username, Password)
     VALUES ('{service}', '{username}', '{password}')'''
     db.execute(command)
@@ -93,7 +106,7 @@ def list_passwords():
     db.commit()
 
     for row in cursor.fetchall():
-        print(f"Service: {row[0]:<10} Username: {row[1]:<10} Password: {row[2]:<10}")
+        print(f"Service: {row[0]:<10} Username: {row[1]:<10} Password: {decrypt(row[2]):<10}")
 
     input("\nPress Enter to continue..")
 

@@ -14,8 +14,10 @@ git clone https://github.com/AbdulmohsenA/PasswordManager
 
 ### Adjusting the .env file
 You will fine a file called ADMIN.env has your Master password in order to access the database through this program.
+`KEY` is a key to encrypt and decrypt your passwords.
 ```
 DATABASE_PASSWORD = (Your password)
+KEY = (KEY)
 ```
 
 install requirements.txt
@@ -35,7 +37,7 @@ pip install requirements.txt
 
 #### Security
 - **Secure the admin password**: Salt the login and hash it, and don't save the Admin password itself
-- **Cypher the stored passwords**: Hash them in the database and decrypt them only when printing them
+- ~~**Cypher the stored passwords**: Encrypt them in the database and decrypt them only when printing them~~
 - **Only door is this program**: Make it so that the only way to see the passwords in the db is through this program (SEE ext)
 
 #### Adjustments
