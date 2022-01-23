@@ -2,18 +2,24 @@ import sqlite3, os, sys, string, random
 from dotenv import load_dotenv
 from time import sleep
 from cryptography.fernet import Fernet
+from getpass import getpass
 
 def main():
 
     # Load the Admin password from .env file
     load_dotenv("ADMIN.env")
-    ADMIN_PASSWORD = os.environ["DATABASE_PASSWORD"]
 
+    try :
+        ADMIN_PASSWORD = os.environ["DATABASE_PASSWORD"]
+    except:
+        print("SETUP ERROR: please run setup.py program first")
+        sys.exit(1)
 
-    login = input("Enter password: ")
+    
+    login = getpass("Enter password: ")
 
     while login != ADMIN_PASSWORD:
-        login = input("Wrong password, try again: ")
+        login = getpass("Wrong password, try again: ")
         if login == "q":
             sys.exit(1)
 

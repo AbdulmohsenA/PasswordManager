@@ -26,6 +26,7 @@ pip install requirements.txt
 ```
 
 ## Procedure
+- First: run setup.py which will set your main password and key, setup.py will delete itself after the first run.
 - Once you run PasswordManager.py is will make a database file named "PASSWORDS.db" and it will be using it.
 
 ## TODO
