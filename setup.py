@@ -15,4 +15,4 @@ PASS = getpass.getpass("Enter your main password: ")
 KEY = 'gcPZx4_U1Xtw8Zl0dCCJdY02FKejaMQ-8a40RbLnO0M='
 dotenv.set_key("ADMIN.env", "DATABASE_PASSWORD", secure_pass(PASS))
 dotenv.set_key("ADMIN.env", "KEY", KEY)
-#os.remove(argv[0])
+os.remove(sys.argv[0])
