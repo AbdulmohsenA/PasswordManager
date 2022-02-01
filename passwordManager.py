@@ -1,4 +1,5 @@
 import sqlite3, os, sys, string, random
+import traceback
 from dotenv import load_dotenv
 from time import sleep
 from cryptography.fernet import Fernet
@@ -11,9 +12,9 @@ def main():
 
     try :
         ADMIN_PASSWORD = os.environ["DATABASE_PASSWORD"]
-    except:
-        print("SETUP ERROR: please run setup.py program first")
-        sys.exit(1)
+    except KeyError as exc:
+        message = '\033[92m' + "The database password is not defined, kindly run setup.py first." + '\033[0m'
+        raise RuntimeError(message)
 
     
     login = getpass("Enter password: ")
@@ -40,30 +41,33 @@ def main():
     
 
     choice = userInterface()
-    while choice != "q":
-        if choice == "gp": 
-            username = input("Enter username: ")
-            service = input("Enter service: ")
-            add_password(service, username, generate_password())
-            print("Done.\n")
 
-        elif choice == "ap":
-            username = input("Enter username: ")
-            service = input("Enter service: ")
-            password = input("Enter password: ")
-            add_password(service, username, password)
-            print("Done.\n")
+    while True:
+        match choice:
+            case "q":
+                print("System will terminate.")
+                sys.exit(0)
+            
+            case "gp":
+                username = input("Enter username: ")
+                service = input("Enter service: ")
+                add_password(service, username, generate_password())
+                print("Done.\n")
 
-        elif choice == "dl":
-            username = input("Enter the username: ")
-            delete_password(username)
+            case "ap":
+                username = input("Enter username: ")
+                service = input("Enter service: ")
+                password = input("Enter password: ")
+                add_password(service, username, password)
+                print("Done.\n")
 
-        elif choice == "list":
-            list_passwords()
-            print()
+            case "dl":
+                username = input("Enter the username: ")
+                delete_password(username)
 
-        else:
-            print("\n\nWrong choice, try again.\n")
+            case "list":
+                list_passwords()
+                print()
 
         sleep(1)
         choice = userInterface()
