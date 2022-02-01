@@ -7,9 +7,9 @@ from hashlib import sha256
 with open("ADMIN.env", "w") as f:
     pass
 
-#TODO Hash the password and secure it
+# Hash the password and secure it
 def secure_pass(password):
-    return password
+    return sha256(password.encode()).hexdigest()
 
 PASS = getpass.getpass("Enter your main password: ")
 KEY = 'gcPZx4_U1Xtw8Zl0dCCJdY02FKejaMQ-8a40RbLnO0M='

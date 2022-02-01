@@ -1,5 +1,5 @@
 import sqlite3, os, sys, string, random
-import traceback
+from hashlib import sha256
 from dotenv import load_dotenv
 from time import sleep
 from cryptography.fernet import Fernet
@@ -13,13 +13,13 @@ def main():
     try :
         ADMIN_PASSWORD = os.environ["DATABASE_PASSWORD"]
     except KeyError as exc:
-        message = '\033[92m' + "The database password is not defined, kindly run setup.py first." + '\033[0m'
+        message = '\33[91m' + "The database password is not defined, kindly run setup.py first." + '\033[0m'
         raise RuntimeError(message)
 
     
     login = getpass("Enter password: ")
 
-    while login != ADMIN_PASSWORD:
+    while mainHash(login) != ADMIN_PASSWORD:
         login = getpass("Wrong password, try again: ")
         if login == "q":
             sys.exit(1)
@@ -45,7 +45,7 @@ def main():
     while True:
         match choice:
             case "q":
-                print("System will terminate.")
+                print('\33[3m\33[92m' + 'System ended successfully.' + '\033[0m')
                 sys.exit(0)
             
             case "gp":
@@ -63,7 +63,8 @@ def main():
 
             case "dl":
                 username = input("Enter the username: ")
-                delete_password(username)
+                service = input("Enter the service: ")
+                delete_password(username, service)
 
             case "list":
                 list_passwords()
@@ -71,6 +72,9 @@ def main():
 
         sleep(1)
         choice = userInterface()
+
+def mainHash(password):
+    return sha256(password.encode()).hexdigest()
 
 def userInterface():
     print("\n"*3)
@@ -106,8 +110,8 @@ def add_password(service, username, password):
     db.execute(command)
     db.commit()
 
-def delete_password(username):
-    command = f'''DELETE FROM Passwords WHERE Username="{username}"'''
+def delete_password(username, service):
+    command = f'''DELETE FROM Passwords WHERE Username="{username}" AND Service ="{service}"'''
     db.execute(command)
     db.commit()
 

@@ -40,7 +40,8 @@ After that. Run `PasswordManager.py` to initialize your database and to start us
 #### Security
 - **Secure the admin password**: Salt the login and hash it, and don't save the Admin password itself
 - ~~**Cipher the stored passwords**: Encrypt them in the database and decrypt them only when printing them~~
-- **Only door is this program**: Make it so that the only way to see the passwords in the db is through this program (SEE ext)
+- **Only door is this program**: Make it so that the only way to see the data in the db is through this program (SEE ext)
 
 #### Adjustments
 - **Cleanup**: Optimize the code
+- **UI/UX**: Enhance UI design
