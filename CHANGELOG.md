@@ -13,3 +13,12 @@
 - Delete password now ask for service name
 
 ---
+
+## [0.2.7] - 2022-02-07
+
+
+
+### Changed
+- Added some comments
+
+---

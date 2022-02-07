@@ -1,3 +1,5 @@
+# Importing necessary libraries
+
 import sqlite3, os, sys, string, random
 from hashlib import sha256
 from dotenv import load_dotenv
@@ -41,7 +43,7 @@ def main():
     
 
     choice = userInterface()
-
+    
     while True:
         match choice:
             case "q":
@@ -87,7 +89,6 @@ def userInterface():
     print("*"*20)
 
     choice = input("Enter your choice: ").lower()
-
     return choice
 
 def encrypt(password):
@@ -100,7 +101,7 @@ def decrypt(password):
 
 def generate_password():
     chars = string.ascii_letters + string.digits + "!@#$%^&*()"
-    password = "".join(random.choice(chars) for i in range(12))
+    password = "".join(random.choice(chars) for i in range(random.randint(10, 16)))
     return password
 
 def add_password(service, username, password):
@@ -123,6 +124,7 @@ def list_passwords():
         print(f"Service: {row[0]:<10} Username: {row[1]:<10} Password: {decrypt(row[2]):<10}")
 
     input("\nPress Enter to continue..")
+
 
 if __name__ == "__main__":
     main()
