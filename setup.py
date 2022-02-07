@@ -16,5 +16,8 @@ KEY = 'gcPZx4_U1Xtw8Zl0dCCJdY02FKejaMQ-8a40RbLnO0M='
 dotenv.set_key("ADMIN.env", "DATABASE_PASSWORD", secure_pass(PASS))
 dotenv.set_key("ADMIN.env", "KEY", KEY)
 
-# Delte this file at the end
+# Delete this file and run the main program
+print('\33[3m\33[92m' + 'Password set successfully.\n' + '\033[0m')
+print("passwordManager.py will run automatically")
 os.remove(sys.argv[0])
+os.system('python passwordManager.py')

@@ -26,7 +26,7 @@ pip install requirements.txt
 
 ### Procedure
 Run `setup.py` to initialize your secret info (Master password, KEY, etc..). `setup.py` will delete itself after the first run, so choose your password wisely.  
-After that. Run `PasswordManager.py` to initialize your database and to start using the program.
+After that. Use `PasswordManager.py` to start using the program.
 
 ---
  

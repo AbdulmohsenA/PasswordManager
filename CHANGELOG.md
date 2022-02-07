@@ -17,6 +17,8 @@
 ## [0.2.7] - 2022-02-07
 
 
+### Added
+- `setup.py` now runs the main program when it finishes
 
 ### Changed
 - Added some comments
